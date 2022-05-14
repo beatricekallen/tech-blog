@@ -5,8 +5,10 @@ class Comment extends Model {}
 
 Comment.init(
   {
-    body: DataTypes.STRING,
-    allowNull: false,
+    body: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
   },
   {
     sequelize,
