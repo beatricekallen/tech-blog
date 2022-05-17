@@ -3,14 +3,23 @@ const { Post, Comment, User } = require("../models");
 
 // get all posts for homepage
 router.get("/", async (req, res) => {
+  console.log("get test 0");
   try {
     // we need to get all Posts and include the User for each (change lines 8 and 9)
     //TODO: check changes are correct
+    console.log("get test 1");
     const postData = await Post.findAll({
-      include: { include: User },
+      include: [
+        {
+          model: User,
+          attributes: "username",
+        },
+      ],
     });
+    console.log("get test 2");
     // serialize the data
     const posts = postData.map((post) => post.get({ plain: true }));
+
     // we should render all the posts here
     //TODO: check render is correct
     res.render("all-posts", { posts });
