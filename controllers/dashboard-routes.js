@@ -10,6 +10,23 @@ router.get("/", withAuth, async (req, res) => {
       where: {
         id: req.session.user_id,
       },
+      attributes: ["id", "title", "body", "user_id", "created_at"],
+      include: [
+        {
+          model: Comment,
+          attributes: [
+            "id",
+            "comment_text",
+            "post_id",
+            "user_id",
+            "created_at",
+          ],
+          include: {
+            model: User,
+            attributes: ["username"],
+          },
+        },
+      ],
     });
 
     // this sanitizes the data we just got from the db above (you have to create the above)
