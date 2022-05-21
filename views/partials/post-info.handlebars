@@ -1,11 +1,13 @@
 <article>
-  <div>
-    <a href="/post/{{id}}"><h1>{{title}}</h1></a>
-    <p>Posted by {{user.username}} on {{format_date createdAt}}</p>
-    <p>{{body}}</p>
-  </div>
-  <div>
-    <p>{{comments.length}}
-      {{format_plural "comment" comments.length}}</p>
-  </div>
+  <div class="card">
+    <a href="/post/{{id}}"><h1 class="card-header">{{title}}</h1></a>
+    <div class="card-body"><p>Posted by
+        {{user.username}}
+        on
+        {{format_date createdAt}}</p>
+      <p>{{body}}</p>
+      <p>{{comments.length}}
+        {{format_plural "comment" comments.length}}</p>
+    </div></div>
+
 </article>
