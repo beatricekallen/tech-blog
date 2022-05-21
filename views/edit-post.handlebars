@@ -3,20 +3,26 @@
   <h2>
     Edit Post
   </h2>
-  <form class="edit-post-form">
+  <form class="edit-post-form" id="edit-post-form">
     <div>
-      <input name="post-title" type="text" value="{{post.title}}" />
-      <span>({{format_url post.post_url}})</span>
+      <p>Post Title:</p><input name="post-title" type="text" value="{{post.title}}" />
+    </div>
+        <div>
+      <p>Post Body:</p><input name="post-body" type="text" value="{{post.body}}" />
     </div>
     <div>
-      <a href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
+      <button type="submit">Save post</button>
+    <button type="button" class="delete-post-btn" id="delete-btn">Delete post</button>
     </div>
-    <button type="submit">Save post</button>
-    <button type="button" class="delete-post-btn">Delete post</button>
+    
   </form>
 </article>
 
-<form class="comment-form">
+
+
+{{> comments post.comments}}
+
+<form class="comment-form" id="new-comment-form">
   <div>
     <textarea name="comment-body"></textarea>
   </div>
@@ -25,8 +31,6 @@
     <button type="submit">add comment</button>
   </div>
 </form>
-
-{{> comments post.comments}}
 
 <script src="/js/edit.js"></script>
 <script src="/js/comment.js"></script>
